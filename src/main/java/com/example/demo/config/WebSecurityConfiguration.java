@@ -19,7 +19,7 @@ public class WebSecurityConfiguration {
             .csrf(csrf -> csrf.disable())
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/**").permitAll() // tu peux adapter
+                .requestMatchers("/**").permitAll()
             );
 
         return http.build();
@@ -28,12 +28,7 @@ public class WebSecurityConfiguration {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList(
-                "https://gmao-app.netlify.app",
-                "http://localhost:4200",
-                "http://127.0.0.1:4200",
-                "https://app.netlify.com"
-        ));
+        configuration.setAllowedOriginPatterns(Arrays.asList("*")); // <- important
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setAllowCredentials(true);
@@ -43,3 +38,4 @@ public class WebSecurityConfiguration {
         return source;
     }
 }
+
