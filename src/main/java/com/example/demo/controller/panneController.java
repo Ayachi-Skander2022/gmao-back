@@ -17,8 +17,7 @@ import com.example.demo.entities.Panne;
 import com.example.demo.service.IPanneService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("/panne")
+@CrossOrigin(origins = {"https://gmao-app.netlify.app", "http://localhost:4200"})@RequestMapping("/panne")
 
 public class panneController {
 @Autowired

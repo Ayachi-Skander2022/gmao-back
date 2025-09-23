@@ -18,8 +18,7 @@ import com.example.demo.service.IArticleService;
 
 @RestController
 @RequestMapping("/article")
-@CrossOrigin(origins = "http://localhost:4200")
-public class articleController {
+@CrossOrigin(origins = {"https://gmao-app.netlify.app", "http://localhost:4200"})public class articleController {
 @Autowired
 
 IArticleService articleService;

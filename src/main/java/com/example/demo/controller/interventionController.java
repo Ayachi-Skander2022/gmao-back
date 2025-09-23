@@ -17,8 +17,7 @@ import com.example.demo.entities.Intervention;
 import com.example.demo.service.IInterventionService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("/intervention")
+@CrossOrigin(origins = {"https://gmao-app.netlify.app", "http://localhost:4200"})@RequestMapping("/intervention")
 public class interventionController {
 	@Autowired
 	

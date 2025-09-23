@@ -17,8 +17,7 @@ import com.example.demo.entities.User;
 import com.example.demo.service.IUserService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("/user")
+@CrossOrigin(origins = {"https://gmao-app.netlify.app", "http://localhost:4200"})@RequestMapping("/user")
 public class userController {
 @Autowired
 	

@@ -18,8 +18,7 @@ import com.example.demo.service.IIntervenantService;
 
 @RestController
 @RequestMapping("/intervenant")
-@CrossOrigin(origins = "http://localhost:4200")
-public class intervenantController {
+@CrossOrigin(origins = {"https://gmao-app.netlify.app", "http://localhost:4200"})public class intervenantController {
 	@Autowired
 	IIntervenantService intervenantService;
 	

@@ -11,8 +11,7 @@ import com.example.demo.entities.Role;
 import com.example.demo.service.IRoleService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("/role")
+@CrossOrigin(origins = {"https://gmao-app.netlify.app", "http://localhost:4200"})@RequestMapping("/role")
 public class roleController {
 	@Autowired
 	IRoleService roleService;

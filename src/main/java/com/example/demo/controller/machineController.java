@@ -17,8 +17,7 @@ import com.example.demo.entities.Machine;
 import com.example.demo.service.IMachineService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
-
+@CrossOrigin(origins = {"https://gmao-app.netlify.app", "http://localhost:4200"})
 @RequestMapping("/machine")
 public class machineController {
 	@Autowired
