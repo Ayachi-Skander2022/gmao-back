@@ -3,6 +3,8 @@ package com.example.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,16 +19,27 @@ import com.example.demo.entities.User;
 import com.example.demo.service.IUserService;
 
 @RestController
-@CrossOrigin(origins = {"https://gmao-app.netlify.app", "http://localhost:4200"})@RequestMapping("/user")
+@RequestMapping("/user")
+@CrossOrigin(origins = {"https://gmao-app.netlify.app", "http://localhost:4200"})
 public class userController {
 @Autowired
 	
 	IUserService userService;
 
-@PostMapping("/addUser")
-public User addPanne(@RequestBody User user) {
-	return userService.addUser(user);
+
+
+	@PostMapping("/addUser")
+public ResponseEntity<?> addUser(@RequestBody User user) {
+    try {
+        User savedUser = userService.addUser(user);
+        return ResponseEntity.ok(savedUser);
+    } catch (Exception e) {
+        e.printStackTrace(); // Affiche l’erreur exacte dans les logs Render
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                             .body("Erreur lors de l'ajout de l'utilisateur : " + e.getMessage());
+    }
 }
+
 
 @PostMapping("/addTestEmail")
 public String addTestEmail (@RequestBody User user) {
@@ -45,6 +58,7 @@ public String deleteUser(@PathVariable("id") Long idUser) {
 	userService.deleteUser(idUser);
 	return msg;
 }
+
 @GetMapping("/findAllUser")
 public List<User> findAll(){
 	return userService.findAll();
